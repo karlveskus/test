@@ -1,0 +1,9 @@
+### List all accounts
+GET http://localhost/account/all
+
+### Retrieve the account numbered 3141
+GET http://localhost/account/number/3141
+
+### Create a transaction from Account 3141 to Account 1415
+POST http://localhost/transaction/create?debitNumber=3141&creditNumber=1415&amount=100
+
