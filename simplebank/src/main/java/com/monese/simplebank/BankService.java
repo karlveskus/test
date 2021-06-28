@@ -23,6 +23,7 @@ public class BankService {
     }
 
     public List<Account> getAccounts() {
+        // TODO should order by account number (descending)
         return accountRepository.findAll();
     }
 
@@ -33,13 +34,16 @@ public class BankService {
     }
 
     public Transaction createTransaction(String debitNumber, String creditNumber, BigDecimal amount) {
+        // TODO add validations?
         Account debit = getAccount(debitNumber);
         Account credit = getAccount(creditNumber);
         Transaction transaction = new Transaction();
         transaction.setDebit(debit);
         transaction.setCredit(credit);
         transaction.setAmount(amount);
+        // TODO currency should be passed as a parameter
         transaction.setCurrency("GBP");
+        // TODO should update balances
         return transactionRepository.save(transaction);
     }
 }
