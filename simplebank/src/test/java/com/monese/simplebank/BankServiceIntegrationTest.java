@@ -37,7 +37,7 @@ class BankServiceIntegrationTest extends TestBase {
         List<Account> accounts = bankService.getAccounts();
 
         assertThat(accounts).flatExtracting(Account::getNumber)
-                .containsExactly("3141", "1415", "2718");
+                .containsExactly("3141", "2718", "1415");
     }
 
     @Test
