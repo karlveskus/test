@@ -45,7 +45,6 @@ class BankServiceIntegrationTest extends TestBase {
         assertThat(transactionRepository.findAll()).isEmpty();
 
         mockMvc.perform(post("/transaction/create")
-                .contentType("application/json")
                 .param("debitNumber", "3141")
                 .param("creditNumber", "1415")
                 .param("amount", "31.51"))
