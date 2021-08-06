@@ -42,6 +42,12 @@ class BankServiceIntegrationTest extends TestBase {
 
     @Test
     void createTransaction() throws Exception {
+        assertThat(accountRepository.findAll())
+                .extracting(Account::getNumber, Account::getBalance)
+                .contains(
+                        tuple("1415", new BigDecimal("-20.00")),
+                        tuple("3141", new BigDecimal("300.00"))
+                );
         assertThat(transactionRepository.findAll()).isEmpty();
 
         mockMvc.perform(post("/transaction/create")
